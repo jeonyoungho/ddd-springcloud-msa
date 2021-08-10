@@ -1,0 +1,4 @@
+rootProject.name = 'ddd-springcloud-msa'
+include 'product'
+include 'ordergroup'
+

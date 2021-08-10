@@ -1,0 +1,8 @@
+POST http://localhost:8081/api/v1/products
+Content-Type: application/json
+
+{
+  "name": "LGGram",
+  "price": 100,
+  "description": "Best Notebook!"
+}

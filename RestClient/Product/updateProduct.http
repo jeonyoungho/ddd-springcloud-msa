@@ -1,0 +1,8 @@
+PUT http://localhost:8081/api/v1/products/1
+Content-Type: application/json
+
+{
+  "name": "macbook pro",
+  "price": 200,
+  "description": "modified!"
+}

@@ -1,0 +1,7 @@
+PUT http://localhost:8082/api/v1/orders/1
+Content-Type: application/json
+
+{
+  "description": "Modified Notebook!",
+  "productIds": [4, 5, 6]
+}

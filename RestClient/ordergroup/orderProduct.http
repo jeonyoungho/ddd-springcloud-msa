@@ -1,0 +1,7 @@
+POST http://localhost:8082/api/v1/orders
+Content-Type: application/json
+
+{
+  "description": "Best Notebook!",
+  "productIds": [1, 2, 3]
+}

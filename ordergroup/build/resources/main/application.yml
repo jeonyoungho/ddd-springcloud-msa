@@ -1,0 +1,24 @@
+server:
+  port: 8082
+
+ordergroup:
+  api: "/api/v1"
+
+product:
+  api:
+    url: "http://localhost:8081/api/v1/products/ids?productIds="
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC&characterEncoding=UTF-8
+    username: 'root'
+    password: '*dydgH1092'
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: update
