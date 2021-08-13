@@ -15,5 +15,5 @@ public interface OrderGroupRepository extends JpaRepository<OrderGroup, Long> {
 
     @EntityGraph(attributePaths = {"lineItems", "lineItems.product"})
     @Query("select o from OrderGroup o where o.id=:id")
-    List<OrderGroup> findByIdWithProducts(Long id);
+    OrderGroup findByIdWithProducts(Long id);
 }

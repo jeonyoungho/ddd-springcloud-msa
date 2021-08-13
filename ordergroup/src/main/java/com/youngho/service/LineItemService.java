@@ -34,4 +34,9 @@ public class LineItemService {
         lineItemRepository.saveAll(lineItems);
     }
 
+    @Transactional
+    public void deleteLineItems(Set<LineItem> items) {
+        lineItemRepository.deleteAll(items);
+    }
+
 }

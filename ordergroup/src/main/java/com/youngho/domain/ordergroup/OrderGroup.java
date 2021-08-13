@@ -27,6 +27,10 @@ public class OrderGroup {
     @OneToMany(mappedBy = "orderGroup", cascade = CascadeType.ALL)
     private Set<LineItem> lineItems = new LinkedHashSet<>();
 
+    public void updateLineItems(Set<LineItem> lineItems) {
+        this.lineItems = lineItems;
+    }
+
     @Builder
     public OrderGroup(String description, Set<LineItem> lineItems) {
         this.description = description;

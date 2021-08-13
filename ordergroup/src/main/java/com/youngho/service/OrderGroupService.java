@@ -48,17 +48,24 @@ public class OrderGroupService {
 
     @Transactional(readOnly = true)
     public OrderGroupResponseDto getOrderById(Long id) {
-        return orderGroupRepository.findByIdWithProducts(id)
-                .stream()
-                .map(OrderGroupResponseDto::new)
-                .collect(Collectors.toList()).get(0);
+        return new OrderGroupResponseDto(orderGroupRepository.findByIdWithProducts(id));
     }
 
     @Transactional
     public Long changeOrder(Long id, OrderChangeRequestDto requestDto) {
-        OrderGroup orderGroup = orderGroupRepository.findByIdWithProducts(id).get(0);
-        List<Product> products = getProductsWithRest(requestDto.getProductIds());
-        // TODO:
+        OrderGroup orderGroup = orderGroupRepository.findByIdWithProducts(id);
+        List<Product> newProducts = getProductsWithRest(requestDto.getProductIds());
+        Set<LineItem> newItems = new LinkedHashSet<>();
+        for(Product product:newProducts) {
+            newItems.add(LineItem.builder()
+                    .product(product)
+                    .orderGroup(orderGroup)
+                    .build()
+            );
+        }
+
+        lineItemService.deleteLineItems(orderGroup.getLineItems());
+        orderGroup.updateLineItems(newItems);
 
         return id;
     }
