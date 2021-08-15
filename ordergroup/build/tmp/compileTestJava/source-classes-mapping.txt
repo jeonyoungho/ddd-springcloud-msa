@@ -1,2 +1,0 @@
-com/youngho/domain/ordergroup/OrderGroupRepositoryTest.java
- com.youngho.domain.ordergroup.OrderGroupRepositoryTest

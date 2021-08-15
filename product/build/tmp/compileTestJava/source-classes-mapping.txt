@@ -1,4 +1,0 @@
-com/youngho/web/ProductApiControllerTest.java
- com.youngho.web.ProductApiControllerTest
-com/youngho/domain/ProductRepositoryTest.java
- com.youngho.domain.ProductRepositoryTest
