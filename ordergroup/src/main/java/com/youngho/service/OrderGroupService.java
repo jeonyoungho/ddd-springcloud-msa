@@ -54,9 +54,9 @@ public class OrderGroupService {
     @Transactional
     public Long changeOrder(Long id, OrderChangeRequestDto requestDto) {
         OrderGroup orderGroup = orderGroupRepository.findByIdWithProducts(id);
-        List<Product> newProducts = getProductsWithRest(requestDto.getProductIds());
-        Set<LineItem> newItems = new LinkedHashSet<>();
-        for(Product product:newProducts) {
+        Set<LineItem> newItems = new LinkedHashSet<>(); // Creating a new LineItem collection to be registered
+        List<Product> newProducts = getProductsWithRest(requestDto.getProductIds()); // Get a new product collection to register
+        for(Product product : newProducts) { // Constructing LineItem collection based on new product collection to be registered
             newItems.add(LineItem.builder()
                     .product(product)
                     .orderGroup(orderGroup)
@@ -64,8 +64,8 @@ public class OrderGroupService {
             );
         }
 
-        lineItemService.deleteLineItems(orderGroup.getLineItems());
-        orderGroup.updateLineItems(newItems);
+        lineItemService.deleteLineItems(orderGroup.getLineItems()); // Delete an existing LineItem collection
+        orderGroup.updateLineItems(newItems); // Update the new LineItem collection
 
         return id;
     }
